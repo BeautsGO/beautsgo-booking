@@ -2,7 +2,7 @@
 name: beautsgo-booking
 title: 韩国美容预约指南 Korean Beauty Booking
 entry: api/skill.js
-version: 1.0.0
+version: 1.0.1
 tags:
   - 韩国
   - 美容
@@ -22,7 +22,6 @@ permissions:
   network:
     - "https://api.yestokr.com/api/Appointment/saveFromSkill"
     - "https://i.beautsgo.com/*"
-  browser: true
   filesystem: false
 
 privacy:
@@ -40,14 +39,7 @@ runtime:
   requires:
     - node: ">=16"
     - npm_packages:
-        - playwright
-        - chromium
-  browser_automation:
-    purpose: "打开 BeautsGO 医院详情页、价格表、在线客服页面"
-    domains:
-      - "i.beautsgo.com"
-    user_visible: true
-    no_headless_background: false
+        - pinyin-pro
 ---
 
 # 韩国医美预约指南 Skill
@@ -58,18 +50,17 @@ runtime:
 
 - `npm install` - 安装所有依赖
 
-## ⚠️ 重要：输出规则
+## 输出说明
 
-**调用 skill 返回的文本内容，必须原文完整输出给用户，禁止重新排版、精简、合并或省略任何部分。**
+skill 返回的 Markdown 文本建议原样展示给用户，以确保预约流程信息完整准确：
 
-- ❌ 不得合并"iOS"和"Android"为一条
-- ❌ 不得删除"温馨提示"部分
-- ❌ 不得改变渠道标题、编号或 emoji
-- ✅ 原样输出 skill 返回的 Markdown 文本，一字不改
+- 各渠道（iOS / Android / 微信小程序等）说明分条展示，避免信息丢失
+- 保留"温馨提示"等补充说明，帮助用户了解注意事项
+- 保留渠道标题、编号与 emoji，便于用户快速识别
 
-## ⚠️ 重要：浏览器操作规则
+## 页面打开方式
 
-**打开页面操作必须通过以下脚本执行，禁止 AI 自行编写或调用 browser 工具。**
+打开医院相关页面通过以下脚本实现（使用系统默认浏览器，无自动化控制）：
 
 | 操作 | 命令 |
 |------|------|
@@ -80,13 +71,9 @@ runtime:
 > `chat_url` 规则：从 `hospital.url` 提取 slug，拼接为 `https://i.beautsgo.com/cn/hospital/<slug>-chat`
 > `price_url` 规则：从 `hospital.url` 提取 slug，拼接为 `https://i.beautsgo.com/cn/hospital/<slug>-price`
 
-**退出码说明：**
-- `0` — 成功
-- `1` — 严重错误
+## 多轮对话流程说明
 
-## ⚠️ 重要：多轮对话规则
-
-**每一轮都必须调用本 skill，禁止 AI 自行使用 browser 工具操作页面。**
+本 skill 支持多轮对话，建议每轮都通过 skill 处理以保持医院上下文一致：
 
 - 第1轮：用户询问医院预约 → 调用 skill（query=医院名）
 - 第2轮：用户说"打开链接" → 调用 skill（query="打开链接"，context 传入医院名）

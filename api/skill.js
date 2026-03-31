@@ -287,26 +287,19 @@ module.exports = async function (input) {
       if (h) return h
     }
 
-    // 3. 扫描 context 所有字符串字段（lastQuery / history / text / message 等）
-    const contextTexts = []
-    function collectStrings(obj, depth = 0) {
-      if (depth > 4) return
-      if (typeof obj === 'string' && obj.length > 1) {
-        contextTexts.push(obj)
-      } else if (Array.isArray(obj)) {
-        obj.forEach(item => collectStrings(item, depth + 1))
-      } else if (obj && typeof obj === 'object') {
-        Object.values(obj).forEach(v => collectStrings(v, depth + 1))
-      }
-    }
-    collectStrings(context)
-    for (const text of contextTexts) {
+    // 3. 从 context 的已知字段中读取历史医院信息（只读取明确字段，不递归扫描）
+    const knownContextFields = [
+      context.lastQuery,
+      context.query,
+      context.hospitalName,
+    ].filter(v => typeof v === 'string' && v.length > 0)
+
+    for (const text of knownContextFields) {
       const kw = extractHospitalKeyword(text)
       if (kw) {
         const h = matchHospital(kw, hospitals)
         if (h) return h
       }
-      // 直接用文本做模糊匹配
       const h2 = matchHospital(text, hospitals)
       if (h2) return h2
     }

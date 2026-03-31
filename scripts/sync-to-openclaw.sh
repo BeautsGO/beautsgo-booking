@@ -2,7 +2,7 @@
 # 将项目最新文件同步到 openclaw workspace 缓存，并重启 gateway
 # 用法：bash scripts/sync-to-openclaw.sh
 
-SKILL_CACHE=~/.openclaw/workspace/skills/korean-booking
+SKILL_CACHE=~/.openclaw/workspace/skills/beautsgo-booking
 PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 
 echo "📂 项目目录：$PROJECT_DIR"

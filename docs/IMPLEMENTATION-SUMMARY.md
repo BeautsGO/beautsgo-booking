@@ -159,7 +159,7 @@ node test-multi-turn.js
 ```
 
 ### 在 OpenClaw 中测试
-1. 发布到 clawhub: `clawhub publish korean-booking`
+1. 发布到 clawhub: `clawhub publish beautsgo-booking`
 2. 在 OpenClaw 中调用 Skill
 3. 逐轮输入指令验证流程
 

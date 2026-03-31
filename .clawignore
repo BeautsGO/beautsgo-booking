@@ -1,0 +1,21 @@
+# 静态页面不需要打包进 clawhub
+docs/clinics
+
+# HTML 快照
+page-full-snapshot.html
+page-snapshot.html
+
+# 测试文件
+test_inspect_consult.js
+test_inspect_consult2.js
+test_inspect_dom.js
+test_new_selectors.js
+test-booking-btn.js
+test-complete-flow.js
+test-consult-selectors.js
+test-deep-inspect.js
+test-dom-click.js
+test-form-fields.js
+test-form-inspector.js
+test-form-inspector2.js
+test-form-inspector3.js

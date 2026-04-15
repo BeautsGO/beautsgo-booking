@@ -3,7 +3,7 @@
 > 基于 BeautsGO 平台的韩国美容医疗机构预约查询 Skill，支持首尔 900+ 家皮肤科、整形医院、医美机构，覆盖中/英/日/泰四种语言。用户只需说出医院名或美容项目，即可获取完整预约流程、在线咨询、价格查询及 APP 下载引导。
 
 [![clawhub](https://img.shields.io/badge/clawhub-beautsgo--booking-blue)](https://clawhub.ai/BeautsGO/beautsgo-booking)
-[![version](https://img.shields.io/badge/version-1.0.1-green)](https://clawhub.ai/BeautsGO/beautsgo-booking)
+[![version](https://img.shields.io/badge/version-1.0.2-green)](https://clawhub.ai/BeautsGO/beautsgo-booking)
 
 **📦 安装：**
 ```bash

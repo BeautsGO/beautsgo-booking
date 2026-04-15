@@ -1,6 +1,6 @@
 {
   "name": "beautsgo-booking",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "api/skill.js",
   "scripts": {
     "test": "jest",

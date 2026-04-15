@@ -339,7 +339,7 @@
     "zh_cn_address": "首尔特别市江南区奉恩寺路539号2楼",
     "en_address": "2,3,4,5F,539, Bongeunsa-ro, Gangnam-gu, Seoul",
     "ko_kr_address": "강남구 봉은사로 539,2층",
-    "ja_address": "ソウル市カンナム区（강남구）ポンウンサ路（奉恩寺路）539  2～5階",
+    "ja_address": "ソウル市カンナム区（강남구）ポンウンサ路（奉恩寺路）539  2～5階",
     "th_address": "ชั้น 2 เลขที่ 539 ถนนพงอึนซา เขตคังนัม กรุงโซล"
   },
   {
@@ -2674,7 +2674,7 @@
     "zh_cn_address": "韩国首尔特别市瑞草区江南大路563号Payto广场4楼",
     "en_address": "563rd and 4th floors of Jiangnan Road, Ruicao District, Seoul Special City (Canyuan Cave)",
     "ko_kr_address": "서울특별시 서초구 강남대로 563 페이토플라자 4층",
-    "ja_address": "ソウル特別市ソチョ区（瑞草区）カンナム大路（江南大路）563  4階（チャムウォン洞/蚕院洞）",
+    "ja_address": "ソウル特別市ソチョ区（瑞草区）カンナム大路（江南大路）563  4階（チャムウォン洞/蚕院洞）",
     "th_address": "ชั้น 4 เพย์โต้ พลาซ่า 563 ถนนคังนัมแดโร เขตซอโช กรุงโซล ประเทศเกาหลีใต้"
   },
   {
@@ -3057,7 +3057,7 @@
     "booking_url": "https://i.beautsgo.com/cn/hospital/global-plastic-surgery/skill",
     "zh_cn_address": "首尔市江南区彦州路846全球医疗大厦8层（新沙洞634-5）",
     "en_address": "8F, 846, Eonju-ro, Gangnam-gu, Seoul, Korea",
-    "ko_kr_address": "서울특별시 강남구 신사동 634-5 글로벌메디칼빌딩 8층",
+    "ko_kr_address": "서울특별시 강남구 신사동 634-5 글로벌메디칼빌딩 8층",
     "ja_address": "ソウル 江南区新沙洞 634-5 グローバル美容整形センター8階",
     "th_address": "ชั้น 8 อาคารโกลบอลเมดิคัล 846 ถนนออนจู เขตคังนัม กรุงโซล (ชินซา-ดง 634-5)"
   },
@@ -5933,7 +5933,7 @@
     "booking_url": "https://i.beautsgo.com/cn/hospital/marq/skill",
     "zh_cn_address": "首尔特别市江南区岛山大路138号5层",
     "en_address": "480 Gangnam-daero, 6th Floor, Gangnam-gu, Seoul",
-    "ko_kr_address": "서울 강남구 강남대로 480, 6층",
+    "ko_kr_address": "서울 강남구 강남대로 480, 6층",
     "ja_address": "ソウル江南大路480,6階",
     "th_address": "ชั้น 5, 138 ถนนโดซาน-แดโร, เขตคังนัม, กรุงโซล"
   },
@@ -6169,7 +6169,7 @@
     "booking_url": "",
     "zh_cn_address": "首尔特别市瑞草区江南大路535、10层（盘浦洞）",
     "en_address": "535 Gangnam-daero, 10th Floor, Seocho-gu, Seoul (Banpo-dong)",
-    "ko_kr_address": "서울특별시 서초구 강남대로 535, 10층 (반포동)",
+    "ko_kr_address": "서울특별시 서초구 강남대로 535, 10층 (반포동)",
     "ja_address": "ソウル特別市瑞草区江南大路535、10階（盤浦洞）",
     "th_address": "ชั้น 10, 535 ถนนคังนัมแดโร, แขวงพันโพ, เขตซอโช, กรุงโซล"
   },
@@ -6499,7 +6499,7 @@
     "booking_url": "",
     "zh_cn_address": "首尔市江南区江南大道468号11层（驿三洞，忠林大厦）",
     "en_address": "7F, 439 Gangnam-daero, Seocho-gu, Seoul, South Korea",
-    "ko_kr_address": "서울시 서초구 강남대로 439, 7층",
+    "ko_kr_address": "서울시 서초구 강남대로 439, 7층",
     "ja_address": "ソウル特別市瑞草区江南大路439、7階",
     "th_address": "ชั้น 11 (ยอกซัมดง, อาคารชุงลิม) 468 ถนนคังนัมแดโร เขตกังนัม โซล"
   },
@@ -6565,11 +6565,11 @@
   },
   {
     "id": 530,
-    "name": "thank  you整形医院",
-    "alias": "thank  you整形医院",
+    "name": "thank  you整形医院",
+    "alias": "thank  you整形医院",
     "en_name": "",
-    "pinyin": "thank youzhengxingyiyuan",
-    "pinyin_abbr": "thank youzxyy",
+    "pinyin": "thank youzhengxingyiyuan",
+    "pinyin_abbr": "thank youzxyy",
     "url": "",
     "booking_url": "",
     "zh_cn_address": "韩国首尔市江南区江南大道446号汉威大厦5层、8层、9层 Thank You整形外科医院（皮肤科诊疗）",
@@ -7367,7 +7367,7 @@
     "booking_url": "https://i.beautsgo.com/cn/hospital/pygmalion-plastic-surgery-skin-care-clinic/skill",
     "zh_cn_address": "首尔江南区三星路766号6层（旧地址：首尔江南区清潭洞49号柳林大厦6层）",
     "en_address": "6th Floor, Yurim Building, 766 Samseong-ro, Gangnam-gu, Seoul, South Korea",
-    "ko_kr_address": "서울특별시 강남구 삼성로 766 유림빌딩  6층",
+    "ko_kr_address": "서울특별시 강남구 삼성로 766 유림빌딩  6층",
     "ja_address": "",
     "th_address": "ชั้น 6 เลขที่ 766 ถนนซัมซอง เขตคังนัม กรุงโซล (ที่อยู่เดิม: ชั้น 6 อาคารยูริม เลขที่ 49 แขวงชองดัม เขตคังนัม กรุงโซล)"
   },
@@ -10040,7 +10040,7 @@
     "booking_url": "",
     "zh_cn_address": "韩国首尔特别市江南区清潭洞91-15 Eden5大厦4层",
     "en_address": "4F, 91-15 Cheongdam-dong, Gangnam-gu, Seoul, South Korea",
-    "ko_kr_address": "서울특별시 강남구 청담동 91-15 4층",
+    "ko_kr_address": "서울특별시 강남구 청담동 91-15 4층",
     "ja_address": "ソウル特別市江南区清潭洞91-15、4階",
     "th_address": "ชั้น 4 อาคาร Eden5, 91-15 แขวงชองดัม เขตคังนัม โซล เกาหลีใต้"
   },
@@ -10086,7 +10086,7 @@
     "zh_cn_address": "首尔特别市江南区德黑兰路333号新都风险投资大厦11层",
     "en_address": "11th Floor, Sindo Venture Tower, 333 Teheran-ro, Gangnam-gu, Seoul",
     "ko_kr_address": "서울 강남구 테헤란로 333 신도벤처타워 11층",
-    "ja_address": "江南区  Teheran-ro,333 11階",
+    "ja_address": "江南区  Teheran-ro,333 11階",
     "th_address": "ชั้น 11 อาคาร Shindo Venture Tower, 333 ถนน Teheran-ro, เขต Gangnam-gu, โซล"
   },
   {

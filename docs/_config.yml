@@ -3,19 +3,9 @@ description: BeautsGO 平台韩国医疗美容机构预约流程，支持中英�
 baseurl: "/beautsgo-booking"
 url: "https://beautsgo.github.io"
 
-# 主题（GitHub Pages 内置，无需安装）
-theme: minima
-
-# 不处理 node_modules
+# 不处理这些目录
 exclude:
   - node_modules/
   - scripts/
   - api/
   - core/
-
-# 默认 layout
-defaults:
-  - scope:
-      path: "clinics"
-    values:
-      layout: default

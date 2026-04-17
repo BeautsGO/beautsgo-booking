@@ -3,7 +3,7 @@
   "title": "韩国美容预约指南 Korean Beauty Booking",
   "version": "1.0.2",
   "tags": ["韩国", "美容", "医美", "预约", "首尔", "整形", "皮肤科", "Korea", "beauty", "booking", "aesthetic", "Seoul"],
-  "description": "韩国/首尔美容医美预约助手，内置 900+ 家皮肤科/整形医院数据库（BeautsGO 平台）。支持：①按医院名或项目类型（激光/注射/整形）查询预约流程；②直接调用接口提交预约（收集人数/时间/联系方式后 POST，无需浏览器）；③打开医院详情页/价格表/在线客服；④中/英/日/泰四语言。触发场景：询问韩国美容预约、想做医美、推荐医院、查价格、咨询客服。",
+  "description": "Book appointments at 900+ top-rated Korean dermatology & plastic surgery clinics in Seoul — directly from your AI assistant. No app download, no browser needed. Just tell the AI which clinic or procedure you want (laser, injection, Botox, skin boosters, double eyelid, etc.), and BeautsGO handles the rest: hospital matching, appointment submission, price checking, and live customer service. Supports Chinese, English, Japanese and Thai. Powered by BeautsGO, the leading Korean medical beauty platform trusted by international patients worldwide.",
   "permissions": {
     "network": [
       "https://api.yestokr.com/api/Appointment/saveFromSkill",

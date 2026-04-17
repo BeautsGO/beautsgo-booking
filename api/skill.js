@@ -136,7 +136,7 @@ function getAllHospitalNames(hospitals) {
 
 /**
  * 解析用户输入，提取预约表单字段
- * @param {string} query 用户输入，如 "2人，3月26日，13800138000"
+ * @param {string} query 用户输入，如 "2人，3月26日，19102044571"
  * @returns {{ persons: number, dateText: string, contact: string }}
  */
 function parseFormInput(query) {
@@ -516,7 +516,7 @@ ${lines.join('\n')}
 3. **时间段**（上午 / 下午 / 全天，默认全天）
 4. **联系方式**（手机号）
 
-👉 直接回复，例如："**2人，3月26日下午，13800138000**"`
+👉 直接回复，例如："**2人，3月26日下午，19102044571**"`
     }
 
     // ——————————————————————————————————————————

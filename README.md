@@ -1,7 +1,7 @@
 # BeautsGO — Korean Beauty & Medical Aesthetic Booking Skill
 
 [![clawhub](https://img.shields.io/badge/clawhub-beautsgo--booking-blue)](https://clawhub.ai/BeautsGO/beautsgo-booking)
-[![version](https://img.shields.io/badge/version-1.0.5-green)](https://clawhub.ai/BeautsGO/beautsgo-booking)
+[![version](https://img.shields.io/badge/version-1.0.6-green)](https://clawhub.ai/BeautsGO/beautsgo-booking)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-1300%2B%20Clinics-brightgreen)](https://beautsgo.github.io/beautsgo-booking/)
 
 > **One sentence, one appointment.** Tell your AI assistant which Seoul clinic you want or what procedure you need — BeautsGO handles the rest: clinic matching, booking submission, price lookup, and live customer service. Built on a curated database of **1300+ dermatology clinics, plastic surgery hospitals, and aesthetic centers** in Seoul, supporting **Chinese, English, Japanese, and Thai**.

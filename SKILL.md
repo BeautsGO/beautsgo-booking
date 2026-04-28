@@ -2,7 +2,7 @@
 name: beautsgo-booking
 title: 韩国美容预约指南 Korean Beauty Booking
 entry: api/skill.js
-version: 1.0.3
+version: 1.0.4
 tags:
   - 韩国
   - 美容
@@ -35,7 +35,7 @@ tags:
   - medical aesthetics
   - Korean beauty
   - Seoul clinic
-description: "Book appointments at 900+ top-rated Korean dermatology & plastic surgery clinics in Seoul — directly from your AI assistant. No app download, no browser needed. Just tell the AI which clinic or procedure you want (laser, injection, Botox, skin boosters, double eyelid, rhinoplasty, anti-aging, acne treatment), and BeautsGO handles the rest: hospital matching, appointment submission, price checking, and live customer service. Supports Chinese, English, Japanese and Thai. Powered by BeautsGO, the leading Korean medical beauty platform trusted by international patients worldwide. Keywords: Korea medical tourism, Seoul skin clinic, Korean dermatology, plastic surgery Korea, 韩国医美预约, 韩国皮肤科, 韩国整形外科, 首尔美容院, 医疗旅游韩国, 韩国美容预约, 韩国整容, 水光针预约, 肉毒素预约, 韩式双眼皮."
+description: "Book appointments at 1300+ top-rated Korean dermatology & plastic surgery clinics in Seoul — directly from your AI assistant. No app download, no browser needed. Just tell the AI which clinic or procedure you want (laser, injection, Botox, skin boosters, double eyelid, rhinoplasty, anti-aging, acne treatment), and BeautsGO handles the rest: hospital matching, appointment submission, price checking, and live customer service. Supports Chinese, English, Japanese and Thai. Powered by BeautsGO, the leading Korean medical beauty platform trusted by international patients worldwide. Keywords: Korea medical tourism, Seoul skin clinic, Korean dermatology, plastic surgery Korea, 韩国医美预约, 韩国皮肤科, 韩国整形外科, 首尔美容院, 医疗旅游韩国, 韩国美容预约, 韩国整容, 水光针预约, 肉毒素预约, 韩式双眼皮."
 
 permissions:
   network:

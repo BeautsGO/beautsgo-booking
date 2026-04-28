@@ -2,9 +2,9 @@
 
 [![clawhub](https://img.shields.io/badge/clawhub-beautsgo--booking-blue)](https://clawhub.ai/BeautsGO/beautsgo-booking)
 [![version](https://img.shields.io/badge/version-1.0.4-green)](https://clawhub.ai/BeautsGO/beautsgo-booking)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-900%2B%20Clinics-brightgreen)](https://beautsgo.github.io/beautsgo-booking/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-1300%2B%20Clinics-brightgreen)](https://beautsgo.github.io/beautsgo-booking/)
 
-> **One sentence, one appointment.** Tell your AI assistant which Seoul clinic you want or what procedure you need — BeautsGO handles the rest: clinic matching, booking submission, price lookup, and live customer service. Built on a curated database of **900+ dermatology clinics, plastic surgery hospitals, and aesthetic centers** in Seoul, supporting **Chinese, English, Japanese, and Thai**.
+> **One sentence, one appointment.** Tell your AI assistant which Seoul clinic you want or what procedure you need — BeautsGO handles the rest: clinic matching, booking submission, price lookup, and live customer service. Built on a curated database of **1300+ dermatology clinics, plastic surgery hospitals, and aesthetic centers** in Seoul, supporting **Chinese, English, Japanese, and Thai**.
 
 ---
 
@@ -76,7 +76,7 @@ Minimum query length is 2 characters to prevent false positives.
 
 | Feature | Description |
 |---------|-------------|
-| 🏥 **900+ Clinics** | Curated database of Seoul dermatology, plastic surgery, and aesthetic centers |
+| 🏥 **1300+ Clinics** | Curated database of Seoul dermatology, plastic surgery, and aesthetic centers |
 | 🧠 **4-Tier Matching** | Exact → Pinyin → Fuzzy → Alias — handles Chinese, English, abbreviations, and nicknames |
 | 🎯 **Intent Recognition** | No clinic name needed — just say what procedure you want |
 | 📅 **Direct API Booking** | Submits appointments via `POST /api/Appointment/saveFromSkill` — no browser required |
@@ -84,7 +84,7 @@ Minimum query length is 2 characters to prevent false positives.
 | 💬 **Live Consultation** | Instant connection to clinic customer service |
 | 📱 **App Download** | iOS, Android, Google Play, WeChat Mini Program, and APK links |
 | 🌐 **Multi-Language** | Chinese, English, Japanese, Thai — auto-detected from user input |
-| 📄 **Static Clinic Pages** | SEO-optimized pages for 900+ clinics in 4 languages on [GitHub Pages](https://beautsgo.github.io/beautsgo-booking/) |
+| 📄 **Static Clinic Pages** | SEO-optimized pages for 1300+ clinics in 4 languages on [GitHub Pages](https://beautsgo.github.io/beautsgo-booking/) |
 
 ---
 
@@ -150,7 +150,7 @@ console.log(result2)
 │   ├── service.js            # Business orchestration
 │   └── renderer.js           # Template rendering
 ├── data/
-│   └── hospitals.json        # Clinic database (900+)
+│   └── hospitals.json        # Clinic database (1300+)
 ├── i18n/
 │   ├── en.json               # English
 │   ├── zh.json               # Chinese

@@ -391,6 +391,100 @@ module.exports = async function (input) {
           },
         }
 
+        // ——————————————————————————————————————————
+        // 区域推荐:用户提到首尔/釜山/济州区域名时,推该区域热门医院
+        // 优先级:region > category(区域更具体,优先推)
+        // ——————————————————————————————————————————
+        const REGION_RECOMMEND_MAP = {
+          江南: {
+            label: '首尔江南区',
+            items: [
+              { name: 'JD皮肤科',                   note: '水光针/皮肤管理,网红爆款' },
+              { name: 'ID医院',                     note: '面部轮廓/眼鼻综合,名气大' },
+              { name: 'Barog医院（江南店）',         note: '皮肤管理,江南热门' },
+              { name: '陶瓷医院',                   note: '整形综合' },
+              { name: '梅宗德医院',                 note: '皮肤科口碑老牌' },
+              { name: '鹿美人皮肤科',               note: '皮肤管理与抗衰' },
+              { name: 'Oganacell奥嘉娜皮肤科',      note: '高端皮肤管理' },
+            ],
+          },
+          明洞: {
+            label: '首尔明洞',
+            items: [
+              { name: '明洞丹雅皮肤科',             note: '皮肤管理/水光针' },
+              { name: '明洞lijin皮肤科',            note: '中文服务,游客口碑' },
+              { name: '明洞daybeau',                note: 'daybeau 明洞店,韩式护肤' },
+              { name: '奥缇娜医院 明洞店',          note: '整形综合' },
+            ],
+          },
+          弘大: {
+            label: '首尔弘大',
+            items: [
+              { name: '弘大丽诺芙医院',             note: '皮肤管理/抗衰' },
+              { name: '弘大mind皮肤科',             note: '弘大商圈口碑店' },
+            ],
+          },
+          东大门: {
+            label: '首尔东大门',
+            items: [
+              { name: '东大门doctors皮肤科',        note: '皮肤管理 + 多语言服务' },
+              { name: '夏恩医院',                   note: '皮肤科综合' },
+              { name: '德希尔皮肤科',               note: '德希尔连锁东大门' },
+            ],
+          },
+          清潭: {
+            label: '首尔清潭',
+            items: [
+              { name: '清潭minit',                  note: '皮肤管理' },
+              { name: '清潭jionu医院',              note: '抗衰/整形综合' },
+              { name: '清潭antian抗衰医院',         note: '抗衰专科' },
+            ],
+          },
+          圣水: {
+            label: '首尔圣水',
+            items: [
+              { name: '圣水serene 皮肤科',          note: '圣水商圈精品店' },
+              { name: '圣水melting皮肤科',          note: '皮肤管理' },
+              { name: '圣水艾瑞诗皮肤科医院',       note: 'iris 系列,综合护理' },
+              { name: '圣水newlline皮肤科',         note: '皮肤管理新店' },
+            ],
+          },
+          舍堂: {
+            label: '首尔舍堂',
+            items: [
+              { name: '艾森秀皮肤科',               note: 'Essential 舍堂' },
+            ],
+          },
+          釜山: {
+            label: '釜山',
+            items: [
+              { name: '釜山JRYN 南浦店',            note: '皮肤管理/抗衰' },
+              { name: '釜山丽诺博 renovo （西面）', note: 'renovo 釜山西面' },
+              { name: '奥纳比整形外科',             note: '整形综合' },
+              { name: '米米诊所(光州广川店)',       note: '皮肤管理' },
+            ],
+          },
+          济州: {
+            label: '济州岛',
+            items: [
+              { name: '济州4ever jeju',             note: '济州皮肤管理' },
+              { name: 'Toxnfill济州店',             note: '注射/抗衰' },
+            ],
+          },
+        }
+
+        // 识别区域(放在 category 之前)
+        let region = null
+        if (/江南/.test(query)) region = '江南'
+        else if (/明洞/.test(query)) region = '明洞'
+        else if (/弘大/.test(query)) region = '弘大'
+        else if (/东大门|东大门/.test(query)) region = '东大门'
+        else if (/清潭/.test(query)) region = '清潭'
+        else if (/圣水/.test(query)) region = '圣水'
+        else if (/舍堂/.test(query)) region = '舍堂'
+        else if (/釜山|busan/i.test(query)) region = '釜山'
+        else if (/济州|jeju/i.test(query)) region = '济州'
+
         // 识别项目类型
         const qLower = query.toLowerCase()
         let category = null
@@ -402,6 +496,25 @@ module.exports = async function (input) {
         else if (/脸|轮廓|下颌|颧骨|面部/.test(query)) category = 'face'
         else if (/胸|胸部|隆胸/.test(query)) category = 'breast'
         else if (/吸脂|瘦身|体型/.test(query)) category = 'body'
+
+        // 区域优先级高于项目类型 — 区域信息更具体
+        if (region && REGION_RECOMMEND_MAP[region]) {
+          const rec = REGION_RECOMMEND_MAP[region]
+          const lines = rec.items.map(item => {
+            const h = hospitals.find(h => h.name === item.name)
+            if (!h) return null
+            return `• **${item.name}** — ${item.note}`
+          }).filter(Boolean)
+
+          if (lines.length > 0) {
+            return `📍 **${rec.label}** 热门医美机构 — BeautsGO 平台口碑机构:
+
+${lines.join('\n')}
+
+👉 **直接说医院名字**,我帮你查预约流程
+例如:"${rec.items[0].name}怎么预约" 或 "帮我预约${rec.items[0].name}"`
+          }
+        }
 
         if (category) {
           // 有项目意图 → 给精选推荐列表

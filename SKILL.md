@@ -2,7 +2,7 @@
 name: beautsgo-booking
 title: 韩国美容预约指南 Korean Beauty Booking
 entry: api/skill.js
-version: 1.0.6
+version: 1.0.7
 tags:
   - 韩国
   - 美容
@@ -18,11 +18,40 @@ tags:
   - 激光美容
   - 医疗旅游
   - 韩国皮肤管理
+  - 江南
+  - 明洞
+  - 弘大
+  - 东大门
+  - 清潭
+  - 圣水
+  - 光化门
+  - 舍堂
+  - 釜山
+  - 济州岛
+  - JD皮肤科
+  - 本思
+  - daybeau
+  - reberry
+  - doctors
+  - cnp
+  - 朵戈芙蒂
+  - 丽芬聚
+  - Toxnfill
+  - barog
+  - 德希尔
+  - dayone
+  - VSLINE
+  - Kbeauty
   - Korea
   - beauty
   - booking
   - aesthetic
   - Seoul
+  - Gangnam
+  - Myeongdong
+  - Hongdae
+  - Busan
+  - Jeju
   - dermatology
   - plastic surgery
   - medical tourism
@@ -35,7 +64,7 @@ tags:
   - medical aesthetics
   - Korean beauty
   - Seoul clinic
-description: "Book appointments at 1300+ top-rated Korean dermatology & plastic surgery clinics in Seoul — directly from your AI assistant. No app download, no browser needed. Just tell the AI which clinic or procedure you want (laser, injection, Botox, skin boosters, double eyelid, rhinoplasty, anti-aging, acne treatment), and BeautsGO handles the rest: hospital matching, appointment submission, price checking, and live customer service. Supports Chinese, English, Japanese and Thai. Powered by BeautsGO, the leading Korean medical beauty platform trusted by international patients worldwide. Keywords: Korea medical tourism, Seoul skin clinic, Korean dermatology, plastic surgery Korea, 韩国医美预约, 韩国皮肤科, 韩国整形外科, 首尔美容院, 医疗旅游韩国, 韩国美容预约, 韩国整容, 水光针预约, 肉毒素预约, 韩式双眼皮."
+description: "Book appointments at 1300+ top-rated Korean dermatology & plastic surgery clinics in Seoul, Busan, Jeju — directly from your AI assistant. No app download, no browser needed. Just tell the AI which clinic or procedure you want (laser, injection, Botox, skin boosters, double eyelid, rhinoplasty, anti-aging, acne treatment), and BeautsGO handles the rest: hospital matching, appointment submission, price checking, and live customer service. Supports Chinese, English, Japanese and Thai. Powered by BeautsGO, the leading Korean medical beauty platform trusted by international patients worldwide. Keywords: Korea medical tourism, Seoul skin clinic, Korean dermatology, plastic surgery Korea, 韩国医美预约, 韩国皮肤科, 韩国整形外科, 首尔美容院, 医疗旅游韩国, 韩国美容预约, 韩国整容, 水光针预约, 肉毒素预约, 韩式双眼皮. 热门医院: 江南区 — 梅宗德/Barog/JD皮肤科/hev赫熙/鹿美人/secret希瑞特/金泰拉/伊美芝/爱妮/美LAB/Oganacell奥嘉娜/reberry/Shinebom/ELEV/Pind/GD医院/ID医院/陶瓷医院; 明洞 — UMI优美/reberry/丹雅/lijin/可丽/daybeau/奥缇娜/本思; 弘大 — 罗薇lovae/凯特kate/丽诺芙/思丽本/可丽/本思/桔艺菲/mind; 东大门 — doctors/夏恩/德希尔; 清潭 — 伊瓷美/minit/jionu/ruby抗衰/antian; 圣水 — serene/melting/iris艾瑞诗/newlline; 光化门 — Heritique赫瑞缇/赫利缇可; 舍堂 — Essential艾森秀; 釜山 — 德佛斯特/JRYN/米米/丽诺博renovo/Star/奥纳比/本思/genius; 济州岛 — NowMedi/with皮肤科/4ever/miwoo整形/Wyne; 连锁品牌 — 本思/daybeau/朵戈芙蒂/doctors/丽芬聚/Toxnfill/Barog/德希尔/reberry/cnp/you&i/gu/dayone/VSLINE/Kbeauty."
 
 permissions:
   network:

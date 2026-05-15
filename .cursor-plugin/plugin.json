@@ -1,0 +1,22 @@
+{
+  "name": "beautsgo-booking",
+  "description": "Book appointments at 1300+ top-rated Korean dermatology & plastic surgery clinics in Seoul, Busan, Jeju directly from your AI assistant. Hospital matching, appointment submission, price checking, live customer service in Chinese/English/Japanese/Thai.",
+  "version": "1.0.7",
+  "author": {
+    "name": "BeautsGO",
+    "url": "https://i.beautsgo.com"
+  },
+  "homepage": "https://i.beautsgo.com",
+  "repository": "https://github.com/BeautsGO/beautsgo-booking",
+  "license": "MIT-0",
+  "keywords": [
+    "korean-beauty",
+    "medical-tourism",
+    "seoul",
+    "busan",
+    "jeju",
+    "dermatology",
+    "plastic-surgery",
+    "booking"
+  ]
+}

@@ -1,5 +1,21 @@
-# 静态页面不需要打包进 clawhub
-docs/clinics
+# 静态页面不需要打包进市场
+docs/
+node_modules/
+.git/
+.github/
+.workbuddy/
+.publish-tmp/
+
+# 备份 / 临时 / 报告 / 日志
+*.bak
+*.log
+*.zip
+.DS_Store
+test.txt
+package-lock.json
+上架市场报告-*.md
+上架待办清单-*.md
+工作日志-*.md
 
 # HTML 快照
 page-full-snapshot.html

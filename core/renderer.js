@@ -1,8 +1,28 @@
 const fs = require('fs')
 const path = require('path')
 
+// Inlined from templates/booking.tpl (SkillHub does not allow .tpl uploads)
+const BOOKING_TEMPLATE = [
+  '{title}',
+  '',
+  '{direct_link}',
+  '',
+  '{channel_ios}',
+  '',
+  '{channel_android}',
+  '',
+  '{channel_wechat_mini}',
+  '',
+  '{channel_wechat_oa}',
+  '',
+  '{channel_web}',
+  '',
+  '{tips}',
+  ''
+].join('\n')
+
 function loadTemplate() {
-  return fs.readFileSync(path.join(__dirname, '..', 'templates', 'booking.tpl'), 'utf-8')
+  return BOOKING_TEMPLATE
 }
 
 function loadI18n(lang) {

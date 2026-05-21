@@ -15,3 +15,19 @@ test.txt
 
 # 工作目录（本地专用）
 .workbuddy/
+
+# 本地工作日志 / 报告(不入仓)
+工作日志-*.md
+审核状态实测-*.md
+上架市场报告-*.md
+上架推进报告-*.md
+上架待办清单-*.md
+待你操作清单-*.md
+SKILL_MARKETPLACE_*.md
+
+# 临时发布目录
+.publish-tmp/
+.claude/
+
+# 旧 zip 归档
+*.zip

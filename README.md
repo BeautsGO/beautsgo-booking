@@ -10,11 +10,41 @@
 
 ## Install
 
+### Claude Code / OpenClaw (CLI)
+
 ```bash
 npx clawhub install beautsgo-booking
 ```
 
 Compatible with Claude Code, WorkBuddy, and any [OpenClaw](https://clawhub.ai)-compatible AI client.
+
+### ModelScope (魔搭社区)
+
+```bash
+npx skills add https://www.modelscope.cn/skills/spidericer/beautsgo-booking
+```
+
+Or via ModelScope SDK: `pip install --upgrade modelscope && modelscope skills add spidericer/beautsgo-booking`
+
+### Smithery
+
+```bash
+npx -y smithery skill add beautsgo7/beautsgo-booking
+```
+
+### 国内 AI 助手（粘 GitHub URL 一键装）
+
+#### 月之暗面 Kimi
+
+打开 Kimi 网页版 → **Agent 集群** → 点 **「+ 添加 Claw」** → 粘贴：
+
+```
+https://github.com/BeautsGO/beautsgo-booking
+```
+
+#### 网易有道 LobsterAI
+
+打开 LobsterAI 客户端 → **设置** → **Skills** → **远程导入** → 粘贴上面同一个 URL。
 
 ---
 

@@ -2,7 +2,7 @@
 name: beautsgo-booking
 title: 韩国美容预约指南 Korean Beauty Booking
 entry: api/skill.js
-version: 1.0.7
+version: 1.0.8
 tags:
   - 韩国
   - 美容

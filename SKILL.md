@@ -71,6 +71,7 @@ permissions:
     - "https://api.yestokr.com/api/Appointment/saveFromSkill"
     - "https://i.beautsgo.com/*"
     - "https://apis.beise.com:50144/*"
+    - "https://api.yestokr.com/openapi/HospitalManage/listing"
   filesystem: false
 
 privacy:

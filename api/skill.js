@@ -1,10 +1,51 @@
 const { getBookingGuide } = require('../core/service')
-const hospitals = require('../data/hospitals.json')
+const staticHospitals = require('../data/hospitals.json')
 const { matchHospital } = require('../core/resolver')
 const { extractHospitalKeyword } = require('../core/preprocessor')
 const { openUrl } = require('./browser/open-url')
 const https = require('https')
 const http = require('http')
+
+// 实时医院列表（运行时替换）
+let hospitals = staticHospitals
+
+const HOSPITALS_API_URL = 'https://api.yestokr.com/openapi/HospitalManage/listing'
+const HOSPITALS_API_TOKEN = 'beautsgo-openapi-fixed-token-change-me'
+
+/**
+ * 从后台 API 实时拉取医院列表
+ * 失败时静默回退到本地 JSON
+ */
+function fetchHospitalList() {
+  return new Promise((resolve, reject) => {
+    const url = new URL(HOSPITALS_API_URL)
+    const options = {
+      hostname: url.hostname,
+      path: url.pathname,
+      method: 'POST',
+      headers: { 'X-Open-Token': HOSPITALS_API_TOKEN },
+    }
+    const req = https.request(options, (res) => {
+      let data = ''
+      res.on('data', chunk => { data += chunk })
+      res.on('end', () => {
+        try {
+          const json = JSON.parse(data)
+          if (json.code === 0 && Array.isArray(json.data) && json.data.length > 0) {
+            resolve(json.data)
+          } else {
+            reject(new Error(`API error: ${json.msg || 'empty data'}`))
+          }
+        } catch (e) {
+          reject(new Error(`Parse error: ${data.slice(0, 100)}`))
+        }
+      })
+    })
+    req.on('error', reject)
+    req.setTimeout(10000, () => { req.destroy(); reject(new Error('Timeout')) })
+    req.end()
+  })
+}
 
 /**
  * 识别用户意图
@@ -335,6 +376,17 @@ function submitBookingApi(payload) {
 module.exports = async function (input) {
   const { query, context = {} } = input
   const lang = input.lang || 'zh'
+
+  // ——— 实时拉取最新医院列表，失败时静默使用本地数据 ———
+  try {
+    const freshData = await fetchHospitalList()
+    hospitals = freshData
+    console.log(`[Booking Skill] 实时拉取医院列表: ${hospitals.length} 家`)
+  } catch (e) {
+    // 静默回退，不阻塞主流程
+    hospitals = staticHospitals
+    console.warn(`[Booking Skill] API 拉取失败，使用本地数据: ${e.message}`)
+  }
 
   // 预先加载所有医院名，用于意图识别的歧义消除
   const allHospitalNames = getAllHospitalNames(hospitals)

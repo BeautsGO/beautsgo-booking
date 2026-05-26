@@ -134,6 +134,16 @@ function matchHospital(query, hospitals) {
     }
   }
 
+  // Strategy 3c: query contains hospital name (reverse of strategy 3)
+  // Handles inputs like "GU皮肤科江南店 Onda 价格" → name "GU皮肤科江南店" is in query
+  if (q.length >= MIN_ALIAS_MATCH_LEN) {
+    found = hospitals.find(h => {
+      const nameLower = (h.name || '').toLowerCase()
+      return nameLower.length >= MIN_ALIAS_MATCH_LEN && q.includes(nameLower)
+    })
+    if (found) return found
+  }
+
   // Strategy 4: other fields fuzzy + aliases bidirectional
   if (q.length >= MIN_ALIAS_MATCH_LEN) {
     found = hospitals.find(h => {

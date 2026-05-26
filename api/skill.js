@@ -365,6 +365,18 @@ module.exports = async function (input) {
       if (h) return h
     }
 
+    // 2b. 兜底：从原始 query 中查找医院名（当 stop words 过度清洗时）
+    //  场景："GU皮肤科江南店 Onda 价格" → keyword="GU店 Onda" 匹配失败
+    //  但原始 query 中实际包含了"GU皮肤科江南店"完整名称
+    if (query && query.trim()) {
+      const originalLower = query.trim().toLowerCase()
+      const h = hospitals.find(h => {
+        const nameLower = (h.name || '').toLowerCase()
+        return nameLower.length >= 2 && originalLower.includes(nameLower)
+      })
+      if (h) return h
+    }
+
     // 3. 从 context 的已知字段中读取历史医院信息（只读取明确字段，不递归扫描）
     const knownContextFields = [
       context.lastQuery,
@@ -819,9 +831,9 @@ ${lines.join('\n')}
         // API 返回有效数据
         if (priceResult && priceResult.code === 0 && priceResult.data && priceResult.data.length > 0) {
           const items = priceResult.data.map(item => {
-            const priceText = item.price ? `💰 ${item.price}원` : ''
-            const descText = item.description ? ` — ${item.description}` : ''
-            return `• **${item.name || projectKeyword}**${descText}${priceText ? `\n  ${priceText}` : ''}`
+            const priceText = item.korean_won ? `💰 ${new Intl.NumberFormat().format(parseFloat(item.korean_won))}원` : ''
+            const unitText = item.unit ? `（${item.unit}）` : ''
+            return `• **${item.name}**${unitText}\n  ${priceText}`
           }).join('\n')
 
           return `🏥 **${hospital.name}** — **${projectKeyword}** 项目价格

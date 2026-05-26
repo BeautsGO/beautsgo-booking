@@ -68,7 +68,8 @@
   "permissions": {
     "network": [
       "https://api.yestokr.com/api/Appointment/saveFromSkill",
-      "https://i.beautsgo.com/*"
+      "https://i.beautsgo.com/*",
+      "https://apis.beise.com:50144/*"
     ],
     "filesystem": false
   },

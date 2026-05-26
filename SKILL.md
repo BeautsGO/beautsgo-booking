@@ -70,6 +70,7 @@ permissions:
   network:
     - "https://api.yestokr.com/api/Appointment/saveFromSkill"
     - "https://i.beautsgo.com/*"
+    - "https://apis.beise.com:50144/*"
   filesystem: false
 
 privacy:
@@ -151,6 +152,7 @@ skill 返回的 Markdown 文本建议原样展示给用户，以确保预约流�
 - 自动生成搜索关键词（中文名、英文名、拼音、首字母）
 - 支持简体中文 / 繁体 / 英语 / 日语 / 泰语五语言
 - 打开医院详情页、咨询对话页、**价格表页**
+- **通过 API 查询具体项目价格**（输入"JD皮肤科 Onda 价格"自动查询）
 - **直接调用 API 接口提交预约**（无需浏览器，收集人数/时间/联系方式后直接 POST）
 
 ## 调用方式 - 多轮对话流程
@@ -240,11 +242,18 @@ skill 返回的 Markdown 文本建议原样展示给用户，以确保预约流�
 
 **输出：** ✅ 已打开 XXX 的在线客服对话页面
 
-### 任意轮：查看价格表
+### 任意轮：查看价格 / 项目价格查询
 
-**输入：** `{ "query": "JD皮肤科价格多少" }` 或 `{ "query": "查价格" }`（结合 context 中的医院信息）
+**输入：** `{ "query": "JD皮肤科 Onda 价格" }` 或 `{ "query": "查价格" }`（结合 context 中的医院信息）
 
-**执行：** `node api/browser/open-url.js <price_url>`
+**执行逻辑（API 优先）：**
+1. 识别医院名和项目关键字（如 "Onda"）
+2. 有项目关键字 → 优先调 API 查询具体项目价格：
+   - `GET https://apis.beise.com:50144/c5d1dcbc/ProjectDraft/search?h_id={id}&keywords={keyword}`
+   - `Authorization: 275aed9b-7c41-4a88-b291-20c0df803148`
+3. API 返回有效数据 → 展示项目名称和价格给用户
+4. API 无返回或无项目关键字 → 回退到打开价格表页面：
+   `node api/browser/open-url.js <price_url>`
 
 > `price_url` = `https://i.beautsgo.com/cn/hospital/<slug>-price`，从 `hospital.url` 自动推导
 

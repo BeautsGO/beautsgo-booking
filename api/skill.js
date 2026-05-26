@@ -208,6 +208,84 @@ function parseDateToISO(dateText) {
 }
 
 /**
+ * 从用户输入中提取项目关键字（去除医院名和价格相关词后剩余的内容）
+ * @param {string} query 用户原始输入
+ * @param {object|null} hospital 已匹配的医院对象
+ * @returns {string} 提取到的项目关键字（小写）
+ */
+function extractProjectKeyword(query, hospital) {
+  let text = query.trim()
+
+  // 1. 去除医院名（中文名、英文名、别名）
+  if (hospital) {
+    const hospitalNames = [hospital.name, hospital.en_name, ...(hospital.aliases || [])]
+      .filter(Boolean)
+      .map(n => n.toLowerCase())
+    // 按长度降序排序，优先匹配长名
+    hospitalNames.sort((a, b) => b.length - a.length)
+    for (const name of hospitalNames) {
+      if (text.toLowerCase().includes(name)) {
+        text = text.replace(new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), '')
+        break
+      }
+    }
+  }
+
+  // 2. 去除价格/查询相关词
+  text = text.replace(/价格|价钱|收费|费用|报价|多少钱|价格表|查价格|看价格|打开价格|价格页面|查一下|查询|多少钱|怎么收费|price|cost|pricing/gi, '')
+
+  // 3. 去除标点、空格、纯数字
+  text = text.replace(/[，,。.、！!？?\s（）()\[\]【】：:;；"'"」「]/g, ' ').trim()
+
+  // 4. 如果剩下的是单医院名、无意义词或空，返回空
+  if (!text || text.length < 1) return ''
+
+  // 5. 去除医院相关残留（如 "做""项目" 等泛词）
+  text = text.replace(/做|项目|有|吗|多少/gi, '').trim()
+
+  return text.toLowerCase()
+}
+
+/**
+ * 通过接口查询项目价格
+ * GET https://apis.beise.com:50144/c5d1dcbc/ProjectDraft/search?h_id={id}&keywords={keyword}
+ */
+function queryProjectPrice(h_id, keywords) {
+  return new Promise((resolve, reject) => {
+    const path = `/c5d1dcbc/ProjectDraft/search?h_id=${encodeURIComponent(h_id)}&keywords=${encodeURIComponent(keywords)}`
+    const options = {
+      hostname: 'apis.beise.com',
+      port: 50144,
+      path: path,
+      method: 'GET',
+      headers: {
+        'Authorization': '275aed9b-7c41-4a88-b291-20c0df803148',
+      },
+    }
+    const req = https.request(options, (res) => {
+      let data = ''
+      res.on('data', chunk => { data += chunk })
+      res.on('end', () => {
+        try {
+          const json = JSON.parse(data)
+          resolve(json)
+        } catch (e) {
+          resolve({ code: -1, msg: `响应解析失败: ${data.slice(0, 200)}` })
+        }
+      })
+    })
+    req.on('error', (e) => {
+      resolve({ code: -1, msg: `请求失败: ${e.message}` })
+    })
+    req.setTimeout(15000, () => {
+      req.destroy()
+      resolve({ code: -1, msg: '请求超时' })
+    })
+    req.end()
+  })
+}
+
+/**
  * 通过接口提交预约
  * POST https://api.yestokr.com/api/Appointment/saveFromSkill
  */
@@ -722,7 +800,7 @@ ${lines.join('\n')}
     }
 
     // ——————————————————————————————————————————
-    // 价格：打开价格表页面
+    // 价格：优先调 API 查项目价格，无返回时打开价格表页面
     // ——————————————————————————————————————————
     if (intent === 'price') {
       const hospital = resolveHospital()
@@ -731,6 +809,33 @@ ${lines.join('\n')}
         return '❌ 我还不知道你要查询哪家医院的价格，请告诉我医院名称，例如"JD皮肤科价格"。'
       }
 
+      // 尝试提取项目关键字
+      const projectKeyword = extractProjectKeyword(query, hospital)
+
+      // 如果有项目关键字，先调 API 查询具体价格
+      if (projectKeyword && hospital.id) {
+        const priceResult = await queryProjectPrice(hospital.id, projectKeyword)
+
+        // API 返回有效数据
+        if (priceResult && priceResult.code === 0 && priceResult.data && priceResult.data.length > 0) {
+          const items = priceResult.data.map(item => {
+            const priceText = item.price ? `💰 ${item.price}원` : ''
+            const descText = item.description ? ` — ${item.description}` : ''
+            return `• **${item.name || projectKeyword}**${descText}${priceText ? `\n  ${priceText}` : ''}`
+          }).join('\n')
+
+          return `🏥 **${hospital.name}** — **${projectKeyword}** 项目价格
+
+${items}
+
+---
+💡 想了解更多项目，说"查价格"查看全部价格表
+📖 说"打开链接"查看医院详情
+⚡ 说"帮我预约"直接提交预约申请`
+        }
+      }
+
+      // API 无返回或没有项目关键字 → 回退到打开价格表页面
       const priceUrl = getPriceUrl(hospital)
       const opened = await openUrl(priceUrl).then(() => true).catch(() => false)
 
@@ -743,6 +848,8 @@ ${lines.join('\n')}
 • 💰 各项目收费标准
 • 🎁 当前优惠套餐
 • 📋 项目详情说明
+
+💡 如果想查询具体项目价格，可以说"${hospital.name} Onda 价格"
 
 还需要预约或在线咨询吗？`
       } else {
